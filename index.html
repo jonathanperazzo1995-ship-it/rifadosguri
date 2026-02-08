@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rifa Dos Guri - iPhone 15 Pro Max</title>
+
+  <!-- Fonte Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+    :root{
+      --bg1:#020617;
+      --bg2:#000;
+      --card:#061024;
+      --stroke:#1e293b;
+      --chip:#0b1220;
+      --muted:#94a3b8;
+
+      /* ======= TEMA AZUL ======= */
+      --primary:#3b82f6;
+      --primary2:#2563eb;
+      --primary3:#1d4ed8;
+
+      --neon:#00f5ff;
+      --pink:#ff4fd8;
+      --yellow:#facc15;
+
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+
+      --fs-base: clamp(14px, 1.2vw, 16px);
+      --fs-small: clamp(12px, 1vw, 13px);
+      --fs-h1: clamp(22px, 4.8vw, 30px);
+      --fs-h3: clamp(15px, 2.7vw, 18px);
+      --radius: 18px;
+    }
+
+    body{
+      margin:0;
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(700px 280px at 15% 10%, rgba(255,79,216,.10), transparent 60%),
+        radial-gradient(650px 300px at 85% 12%, rgba(0,245,255,.10), transparent 65%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#fff;
+      padding-bottom:92px;
+      font-size:var(--fs-base);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    @keyframes popIn{
+      from{opacity:0; transform:translateY(10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    .container, header{animation:popIn .35s ease both}
+
+    header{
+      position:relative;
+      padding:16px 14px 16px;
+      border-bottom-left-radius:22px;
+      border-bottom-right-radius:22px;
+      box-shadow:0 22px 80px rgba(0,0,0,.45);
+      background:
+        radial-gradient(700px 260px at 20% 0%, rgba(0,245,255,.18), transparent 58%),
+        radial-gradient(700px 260px at 80% 0%, rgba(255,79,216,.16), transparent 62%),
+        linear-gradient(135deg, #0a2a6a, #2d8cff);
+    }
+
+    /* Botão menu admin (hamburger) */
+    .admin-btn{
+      position:absolute;
+      top:12px; left:12px;
+      width:48px; height:48px;
+      border-radius:14px;
+      border:none;
+      cursor:pointer;
+      background:rgba(2,6,23,.55);
+      border:1px solid rgba(255,255,255,.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:.18s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      z-index: 10;
+    }
+    .admin-btn:hover{transform:translateY(-1px) scale(1.02)}
+    .admin-btn:active{transform:scale(.98)}
+    .admin-btn span{
+      display:block;
+      width:20px; height:2px;
+      background:#fff;
+      border-radius:2px;
+      position:relative;
+    }
+    .admin-btn span::before, .admin-btn span::after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:20px; height:2px;
+      background:#fff;
+      border-radius:2px;
+    }
+    .admin-btn span::before{top:-6px}
+    .admin-btn span::after{top:6px}
+
+    /* ===== HERO ===== */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media(min-width:980px){
+      .hero{ grid-template-columns: 1.15fr .85fr; align-items: stretch; }
+    }
+
+    .hero-left{
+      background: rgba(2,6,23,.35);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .hero-right{
+      background: rgba(2,6,23,.35);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .hero-topbar{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 12px 0;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      text-align:left;
+    }
+    .brand h1{
+      margin:0;
+      font-size: var(--fs-h1);
+      font-weight: 900;
+      letter-spacing:.2px;
+      line-height: 1.05;
+    }
+    .brand p{
+      margin:0;
+      font-size: var(--fs-small);
+      font-weight: 700;
+      opacity: .95;
+    }
+    .badge-price{
+      background: linear-gradient(135deg, rgba(250,204,21,1), rgba(245,158,11,1));
+      color:#000;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 900;
+      box-shadow: 0 16px 30px rgba(0,0,0,.25);
+      line-height: 1.05;
+      text-align:center;
+      min-width: 148px;
+    }
+    .badge-price small{
+      display:block;
+      font-weight: 800;
+      opacity:.9;
+      font-size: 11px;
+    }
+    .badge-price b{
+      display:block;
+      font-size: 18px;
+    }
+
+    /* ✅ CARROSSEL QUADRADO */
+    .carousel{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      max-height: 380px;
+      margin-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(600px 260px at 15% 20%, rgba(0,245,255,.14), transparent 60%),
+        radial-gradient(650px 280px at 85% 15%, rgba(255,79,216,.12), transparent 65%),
+        linear-gradient(180deg, rgba(6,16,36,.55), rgba(2,6,23,.55));
+    }
+    @media(min-width:980px){
+      .carousel{ max-height: 420px; }
+    }
+
+    .carousel-track{
+      height: 100%;
+      display:flex;
+      transition: transform .45s ease;
+      will-change: transform;
+    }
+    .slide{
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .slide img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display:block;
+      transform: translateZ(0);
+    }
+    .slide::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.45));
+      pointer-events:none;
+    }
+    .slide-caption{
+      position:absolute;
+      left:12px;
+      bottom:12px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      z-index:2;
+      max-width: 85%;
+    }
+    .cap-title{font-weight: 900; font-size: 14px;}
+    .cap-sub{font-weight: 700; font-size: 12px; opacity: .92;}
+
+    .car-btn{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(2,6,23,.60);
+      color:#fff;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:3;
+      transition: .18s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+    .car-btn:hover{ transform: translateY(-50%) scale(1.03); }
+    .car-btn:active{ transform: translateY(-50%) scale(.98); }
+    .car-prev{ left: 10px; }
+    .car-next{ right: 10px; }
+
+    .dots{
+      position:absolute;
+      left:50%;
+      bottom:10px;
+      transform: translateX(-50%);
+      display:flex;
+      gap:8px;
+      z-index:3;
+    }
+    .dotbtn{
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.18);
+      cursor:pointer;
+      transition: .18s ease;
+    }
+    .dotbtn.active{
+      background: rgba(0,245,255,.85);
+      border-color: rgba(0,245,255,.95);
+      box-shadow: 0 0 14px rgba(0,245,255,.35);
+    }
+
+    /* Hero right */
+    .hero-metrics{display:flex; gap:10px; flex-wrap: wrap;}
+    .metric{
+      flex: 1;
+      min-width: 140px;
+      background: rgba(6,16,36,.55);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 10px;
+    }
+    .metric .label{font-size: 12px; color: rgba(255,255,255,.88); font-weight: 700;}
+    .metric .value{font-size: 18px; font-weight: 900; margin-top: 6px;}
+    .metric .sub{font-size: 12px; opacity: .85; margin-top: 4px;}
+
+    .hero-cta{display:flex; gap:10px;}
+    .hero-cta button{margin:0;}
+
+    .btn-secondary{
+      background:rgba(11,18,32,.90) !important;
+      color:#fff !important;
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .btn-yellow{
+      background:linear-gradient(135deg,#60a5fa,#2563eb) !important;
+      color:#fff !important;
+      position:relative;
+    }
+    @keyframes pulseGlow{
+      0%,100%{box-shadow:0 0 0 rgba(0,0,0,0)}
+      50%{box-shadow:0 0 18px rgba(59,130,246,.35)}
+    }
+    .btn-yellow{animation:pulseGlow 1.9s ease-in-out infinite}
+
+    /* Social */
+    .social-icons{display:flex; justify-content:flex-start; gap:10px;}
+    .social-icons a{
+      width:42px; height:42px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(2,6,23,.60);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+      transition:.18s ease;
+    }
+    .social-icons a:hover{
+      transform:translateY(-2px) scale(1.06);
+      box-shadow:0 0 0 1px rgba(255,255,255,.14),
+                 0 0 20px rgba(0,245,255,.30),
+                 0 0 18px rgba(255,79,216,.22);
+    }
+    .social-icons img{width:22px;height:22px}
+
+    /* Container */
+    .container{max-width:1200px;margin:0 auto;padding:12px}
+
+    /* Layout */
+    .purchase-layout{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    @media(min-width:980px){
+      .purchase-layout{grid-template-columns:1.25fr .75fr; align-items:start}
+    }
+
+    /* Cards */
+    .card{
+      position:relative;
+      background:
+        radial-gradient(700px 220px at 10% 0%, rgba(0,245,255,.10), transparent 55%),
+        radial-gradient(650px 220px at 90% 0%, rgba(255,79,216,.10), transparent 55%),
+        linear-gradient(180deg, rgba(6,16,36,.96), rgba(2,6,23,.96));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transition:.20s ease;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(90deg, rgba(0,245,255,.0), rgba(0,245,255,.15), rgba(255,79,216,.10), rgba(0,245,255,.0));
+      opacity:0;
+      transition:.20s ease;
+      pointer-events:none;
+    }
+    @media(hover:hover){
+      .card:hover{transform:translateY(-2px)}
+      .card:hover::after{opacity:1}
+    }
+    .card h3{
+      margin:0 0 10px;
+      color:#c7e7ff;
+      letter-spacing:.2px;
+      font-weight:800;
+      font-size:var(--fs-h3);
+    }
+
+    /* Inputs/Buttons */
+    input,textarea,button{
+      width:100%;
+      padding:12px;
+      margin:6px 0;
+      border-radius:14px;
+      border:none;
+      font-size:var(--fs-base);
+      font-family:inherit;
+    }
+    input,textarea{
+      background:rgba(11,18,32,.9);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.10);
+      outline:none;
+      transition:.18s ease;
+    }
+    input:focus,textarea:focus{
+      border-color:rgba(59,130,246,.40);
+      box-shadow:0 0 0 3px rgba(59,130,246,.14);
+    }
+
+    button{
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
+      font-weight:900;
+      cursor:pointer;
+      color:#fff;
+      letter-spacing:.2px;
+      transition:.18s ease;
+      box-shadow:0 16px 30px rgba(0,0,0,.30);
+    }
+    button:hover{transform:translateY(-1px); filter:saturate(1.06)}
+    button:active{transform:scale(.99)}
+
+    .small{font-size:var(--fs-small);opacity:.86;margin:6px 0 0}
+    .aviso{font-size:var(--fs-small);color:var(--yellow)}
+
+    .row-buttons{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:8px;
+    }
+    @media(min-width:520px){
+      .row-buttons{grid-template-columns:repeat(3,1fr)}
+    }
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .chip{
+      background:rgba(11,18,32,.85);
+      border:1px solid rgba(255,255,255,.10);
+      color:#fff;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:var(--fs-small);
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    /* GRID paginado */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(44px,1fr));
+      gap:6px;
+      padding:10px;
+      background:rgba(2,6,23,.70);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+    }
+    .numero{
+      padding:8px 0;
+      border-radius:10px;
+      text-align:center;
+      font-size:11px;
+      font-weight:700;
+      cursor:pointer;
+      user-select:none;
+      transform:translateZ(0);
+      transition:.14s ease;
+      box-shadow:0 8px 16px rgba(0,0,0,.25);
+    }
+    .disponivel{background:rgba(30,41,59,.95)}
+    .selecionado{
+      outline:2px solid rgba(96,165,250,.95);
+      box-shadow:0 0 0 1px rgba(96,165,250,.30),
+                 0 0 18px rgba(96,165,250,.40);
+    }
+    .reservado{background:linear-gradient(135deg,#fff1a8,var(--yellow));color:#000}
+    .pago{
+      background:linear-gradient(135deg, rgba(96,165,250,1), rgba(37,99,235,1));
+      color:#fff;
+    }
+    @media(hover:hover){
+      .numero:hover{
+        transform:translateY(-2px) scale(1.04);
+        box-shadow:0 0 0 1px rgba(255,255,255,.12),
+                   0 0 16px rgba(0,245,255,.20),
+                   0 14px 22px rgba(0,0,0,.35);
+      }
+    }
+
+    /* Pagamento sticky */
+    .pay-sticky{position:static;}
+    @media(min-width:980px){
+      .pay-sticky{
+        position:sticky;
+        top:12px;
+        max-height:calc(100vh - 24px);
+        overflow:auto;
+        padding-right:6px;
+      }
+      .pay-sticky::-webkit-scrollbar{width:8px}
+      .pay-sticky::-webkit-scrollbar-thumb{background:#1e293b;border-radius:10px}
+    }
+
+    /* PIX */
+    .pix-box{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .pix-box img{
+      width:240px;
+      max-width:100%;
+      background:#fff;
+      padding:10px;
+      border-radius:14px;
+      box-shadow:0 0 0 1px rgba(255,255,255,.12), 0 18px 60px rgba(0,0,0,.45);
+      transition:.18s ease;
+    }
+    .pix-glow{
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.12),
+        0 0 28px rgba(59,130,246,.25),
+        0 0 28px rgba(0,245,255,.18),
+        0 18px 60px rgba(0,0,0,.45) !important;
+    }
+    .pix-line{
+      background:rgba(11,18,32,.85);
+      border:1px solid rgba(255,255,255,.10);
+      padding:10px 12px;
+      border-radius:14px;
+      width:100%;
+      word-break:break-all;
+      font-size:var(--fs-small);
+    }
+    .pix-actions{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+      width:100%;
+    }
+    @media(min-width:520px){
+      .pix-actions{grid-template-columns:1fr 1fr}
+    }
+
+    /* Barra fixa app */
+    .appbar{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      background:rgba(2,6,23,.92);
+      border-top:1px solid rgba(255,255,255,.10);
+      backdrop-filter:blur(10px);
+      padding:10px 12px;
+      z-index:80;
+    }
+    .appbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .appbar-info{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:160px;
+    }
+    .appbar-info .muted{color:var(--muted);font-size:var(--fs-small)}
+    .appbar-info .big{font-size:clamp(14px, 2.2vw, 16px);font-weight:900}
+    .appbar-actions{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:8px;
+      width:min(540px, 60%);
+    }
+    @media(max-width:520px){
+      .appbar-actions{width:55%}
+    }
+
+    /* Modal */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      display:none;
+      z-index:90;
+    }
+    .modal{
+      position:fixed;
+      left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      width:min(560px, 92vw);
+      max-height:70vh;
+      overflow:auto;
+      background:rgba(6,16,36,.98);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:14px;
+      display:none;
+      z-index:100;
+      box-shadow:var(--shadow);
+    }
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+    .modal-header h3{margin:0;color:#c7e7ff}
+    .close-mini{
+      width:42px;height:42px;
+      border-radius:14px;
+      background:rgba(11,18,32,.90);
+      border:1px solid rgba(255,255,255,.10);
+      color:#fff;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .close-mini:hover{transform:translateY(-1px)}
+    .list{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .pill{
+      background:rgba(11,18,32,.90);
+      border:1px solid rgba(255,255,255,.10);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:var(--fs-small);
+      box-shadow:0 12px 24px rgba(0,0,0,.25);
+    }
+    .pill button{
+      margin-left:8px;
+      width:auto;
+      padding:4px 8px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      background:rgba(59,130,246,.18);
+      color:#fff;
+    }
+
+    /* Drawer admin */
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      display:none;
+      z-index:50;
+    }
+    .drawer{
+      position:fixed;
+      top:0; left:0;
+      height:100%;
+      width:min(420px, 92vw);
+      background:rgba(6,16,36,.98);
+      border-right:1px solid rgba(255,255,255,.10);
+      transform:translateX(-110%);
+      transition:transform .25s ease;
+      z-index:60;
+      display:flex;
+      flex-direction:column;
+      box-shadow:var(--shadow);
+    }
+    .drawer.open{transform:translateX(0)}
+    .overlay.open{display:block}
+    .drawer-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px;border-bottom:1px solid rgba(255,255,255,.10);
+      background:rgba(30,41,59,.20);
+    }
+    .drawer-header h3{margin:0;color:#c7e7ff;font-size:16px}
+    .drawer-body{padding:14px;overflow:auto}
+    .hidden{display:none}
+
+    /* Admin table */
+    table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+    th,td{border-bottom:1px solid rgba(255,255,255,.08);padding:6px}
+
+    .confirmar{
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
+      border:none;padding:6px 10px;border-radius:10px;cursor:pointer;
+      color:#fff;font-weight:900;
+    }
+    .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .cardstat{
+      background:rgba(11,18,32,.85);
+      border:1px solid rgba(255,255,255,.08);
+      padding:10px;border-radius:12px;flex:1;text-align:center;
+      box-shadow:0 14px 30px rgba(0,0,0,.25);
+    }
+
+    /* ====== PROGRESSO + TICKER ====== */
+    .progress-top{margin-top:12px}
+    .progress-wrap{display:flex;flex-direction:column;gap:10px}
+
+    .progress-head{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .progress-metric{
+      font-size:var(--fs-small);
+      color:rgba(255,255,255,.92);
+      font-weight: 700;
+    }
+    .progress-metric b{color:#fff}
+
+    .progress-bar{
+      position:relative;
+      height:14px;
+      border-radius:999px;
+      background:rgba(11,18,32,.85);
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      box-shadow:0 14px 30px rgba(0,0,0,.25);
+    }
+    .progress-fill{
+      position:absolute;
+      top:0; left:0; bottom:0;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(96,165,250,.95), rgba(37,99,235,.85), rgba(0,245,255,.85));
+      transition:width .55s ease;
+    }
+    @keyframes shimmer{
+      from{transform:translateX(-40%)}
+      to{transform:translateX(140%)}
+    }
+    .progress-fill::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      width:40%;
+      animation:shimmer 1.6s linear infinite;
+    }
+
+    .ticker{
+      position:relative;
+      overflow:hidden;
+      border-radius:14px;
+      background:rgba(11,18,32,.85);
+      border:1px solid rgba(255,255,255,.10);
+      padding:10px;
+      box-shadow:0 14px 30px rgba(0,0,0,.25);
+    }
+    .ticker-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .ticker-title b{color:#fff}
+    .ticker-track{overflow:hidden;white-space:nowrap}
+    .ticker-move{
+      display:inline-block;
+      padding-left:100%;
+      animation:tickerMove 18s linear infinite;
+    }
+    @keyframes tickerMove{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-100%)}
+    }
+    .ticker-item{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-right:16px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(2,6,23,.45);
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+      font-size:var(--fs-small);
+      font-weight: 700;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:rgba(59,130,246,.95);
+      box-shadow:0 0 12px rgba(59,130,246,.55);
+    }
+    .dot.yellow{
+      background:rgba(250,204,21,.95);
+      box-shadow:0 0 12px rgba(250,204,21,.45);
+    }
+
+    /* ✅ BLOCO "NÚMEROS" estilo cotas */
+    .qty-card{
+      background: rgba(11,18,32,.78);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+      margin-top: 10px;
+    }
+    .qty-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .qty-title{
+      margin:0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing:.2px;
+    }
+    .qty-sub{
+      margin:4px 0 0;
+      font-size: 12px;
+      opacity:.9;
+      font-weight:700;
+      color: rgba(255,255,255,.85);
+    }
+    .qty-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .qty-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    @media(min-width:520px){
+      .qty-grid{ grid-template-columns: repeat(6, 1fr); }
+    }
+    .qty-btn{
+      width:100%;
+      padding:10px 10px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(2,6,23,.55);
+      color:#fff;
+      cursor:pointer;
+      box-shadow: 0 12px 22px rgba(0,0,0,.22);
+      transition:.18s ease;
+      text-align:left;
+    }
+    .qty-btn:hover{ transform: translateY(-1px) scale(1.01); }
+    .qty-btn:active{ transform: scale(.99); }
+    .qty-btn b{
+      display:block;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .qty-btn span{
+      display:block;
+      margin-top:4px;
+      font-size: 11px;
+      opacity:.85;
+      font-weight:800;
+    }
+    .qty-cta{
+      margin-top: 10px;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 900;
+    }
+
+    /* ============================================================
+       ✅✅✅ CORREÇÃO FINAL (SLIDES 1 e 2 sem borda e sem distorção)
+       ============================================================ */
+    .carousel, .slide{ background:#000; }
+
+    /* micro-zoom só nos slides 1 e 2 (remove borda clara sem estourar) */
+    .carousel .slide:nth-child(1) img,
+    .carousel .slide:nth-child(2) img{
+      transform: scale(1.04) translateZ(0);
+      object-position: 50% 50%;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <button class="admin-btn" onclick="abrirAdmin()" aria-label="Abrir Admin">
+    <span></span>
+  </button>
+
+  <div class="hero">
+    <!-- LEFT: carrossel -->
+    <div class="hero-left">
+      <div class="hero-topbar">
+        <div class="brand">
+          <h1>🎉 Rifa Dos Guri</h1>
+          <p>📱 iPhone 15 Pro Max</p>
+        </div>
+        <div class="badge-price">
+          <small>Cada número por</small>
+          <b>R$ 0,50</b>
+        </div>
+      </div>
+
+      <!-- ✅ SLIDES -->
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="carTrack">
+          <div class="slide">
+            <img src="assets/slide1.jpg" alt="Rifa iPhone 15 Pro Max" loading="lazy" decoding="async">
+            <div class="slide-caption">
+              <div class="cap-title">🏆 iPhone 15 Pro Max</div>
+              <div class="cap-sub">Apenas R$ 0,50 por número</div>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="assets/slide2.jpg" alt="Prêmios em dinheiro" loading="lazy" decoding="async">
+            <div class="slide-caption">
+              <div class="cap-title">💰 Prêmios em dinheiro</div>
+              <div class="cap-sub">2º e 3º lugar</div>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="assets/slide3.jpg" alt="Participe agora" loading="lazy" decoding="async">
+            <div class="slide-caption">
+              <div class="cap-title">⚡ Participe agora</div>
+              <div class="cap-sub">Escolha seus números e pague via PIX</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="car-btn car-prev" onclick="carPrev()" aria-label="Anterior">❮</button>
+        <button class="car-btn car-next" onclick="carNext()" aria-label="Próximo">❯</button>
+
+        <div class="dots" id="dots">
+          <button class="dotbtn active" onclick="carGo(0)" aria-label="Slide 1"></button>
+          <button class="dotbtn" onclick="carGo(1)" aria-label="Slide 2"></button>
+          <button class="dotbtn" onclick="carGo(2)" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="hero-metrics">
+        <div class="metric">
+          <div class="label">🎟 Números</div>
+          <div class="value"><span id="soldCountHero">0</span> / 30.000</div>
+          <div class="sub">vendidos ou reservados</div>
+        </div>
+        <div class="metric">
+          <div class="label">📊 Progresso</div>
+          <div class="value"><span id="soldPercentHero">0.00%</span></div>
+          <div class="sub">atualização automática</div>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <button class="btn-yellow" onclick="scrollParaNumeros()">Selecionar números</button>
+        <button class="btn-secondary" onclick="scrollParaPagamento()">Pagar via PIX</button>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px">
+        <div class="small" style="margin:0;opacity:.9"><b>Fale Conosco</b></div>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/rifas_dos_gurii?igsh=MWswdmtvNHFoMjkzOA%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/share/1E8PQnAJuu/?mibextid=wwXIfr" target="_blank" rel="noopener">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+          </a>
+          <a href="https://wa.me/5551999868666" target="_blank" rel="noopener">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+          </a>
+        </div>
+      </div>
+
+      <div class="small" style="margin:0;opacity:.88">
+        🎟 30.000 números • 💸 pagamento via PIX • 🔒 confirmação pelo admin
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="card progress-top">
+    <h3>🔥 Andamento da rifa</h3>
+
+    <div class="progress-wrap">
+      <div class="progress-head">
+        <div class="progress-metric">🎟 Vendidos/Reservados: <b id="soldCount">0</b> / <b id="soldTotal">30000</b></div>
+        <div class="progress-metric">📊 Progresso: <b id="soldPercent">0.00%</b></div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="ticker">
+        <div class="ticker-title">
+          <b>⚡ Últimas compras</b>
+          <span class="small" style="margin:0; opacity:.85">atualiza automaticamente</span>
+        </div>
+
+        <div class="ticker-track">
+          <div class="ticker-move" id="tickerMove">
+            <span class="ticker-item"><span class="dot yellow"></span> Aguardando primeiras compras…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="purchase-layout">
+    <!-- ESQUERDA -->
+    <div>
+      <div class="card" id="secNumeros">
+        <h3>🔢 Escolher números</h3>
+
+        <div class="chips">
+          <div class="chip">Página: <b id="pageLabel">1</b></div>
+          <div class="chip">Mostrando: <b id="rangeLabel">1–500</b></div>
+          <div class="chip">Selecionados: <b id="selLabel">0</b></div>
+        </div>
+
+        <div class="qty-card">
+          <div class="qty-head">
+            <div>
+              <div class="qty-title"># Números</div>
+              <div class="qty-sub">Escolha sua quantidade de chances de ganhar</div>
+            </div>
+            <div class="qty-actions">
+              <span class="chip">Selecione a quantidade</span>
+            </div>
+          </div>
+
+          <div class="qty-grid">
+            <button class="qty-btn" onclick="selecionarAleatorios(1)"><b>+ 01</b><span>Adicionar</span></button>
+            <button class="qty-btn" onclick="selecionarAleatorios(15)"><b>+ 15</b><span>Adicionar</span></button>
+            <button class="qty-btn" onclick="selecionarAleatorios(50)"><b>+ 50</b><span>Adicionar</span></button>
+            <button class="qty-btn" onclick="selecionarAleatorios(100)"><b>+ 100</b><span>Adicionar</span></button>
+            <button class="qty-btn" onclick="selecionarAleatorios(200)"><b>+ 200</b><span>Adicionar</span></button>
+            <button class="qty-btn" onclick="selecionarAleatorios(300)"><b>+ 300</b><span>Adicionar</span></button>
+          </div>
+
+          <button class="qty-cta btn-yellow" onclick="prosseguirCompra()">Prosseguir</button>
+        </div>
+
+        <input id="gotoNumber" type="number" placeholder="Ir para número (ex: 15234)">
+        <div class="row-buttons">
+          <button class="btn-secondary" onclick="paginaAnterior()">⬅️ Anterior</button>
+          <button class="btn-secondary" onclick="proximaPagina()">➡️ Próximo</button>
+          <button onclick="irParaNumero()">Ir</button>
+        </div>
+
+        <p class="small">No Android fica leve porque mostra só 500 números por vez.</p>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <!-- DIREITA -->
+    <div class="pay-sticky" id="secPagamento">
+      <div class="card">
+        <h3>💳 Pagamento via PIX</h3>
+        <div class="pix-box">
+          <img id="qrPix" alt="QR Code PIX">
+
+          <div class="pix-line">
+            <b>PIX Copia e Cola (oficial):</b><br>
+            <span id="pixPayloadText">Selecione números para gerar…</span>
+          </div>
+
+          <div class="pix-actions">
+            <button onclick="copiarPixCopiaCola()">📋 Copiar PIX Copia e Cola</button>
+            <button class="btn-secondary" onclick="copiarChaveCnpj()">📋 Copiar CNPJ (chave PIX)</button>
+          </div>
+
+          <p class="aviso" id="pixHint">Selecione números para gerar o QR PIX com o valor.</p>
+          <p class="small">Chave PIX (CNPJ): <b id="pixKeyInline"></b></p>
+        </div>
+      </div>
+
+      <div class="card" id="cardCadastro">
+        <h3>📝 Dados do comprador</h3>
+        <input id="nome" placeholder="Nome completo">
+        <input id="telefone" placeholder="Telefone / WhatsApp">
+        <button class="btn-yellow" onclick="enviarWhats()">Enviar comprovante PIX</button>
+        <p class="small">Depois de pagar, clique acima para mandar comprovante e seus números no WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Barra fixa -->
+<div class="appbar" role="region" aria-label="Barra de ações">
+  <div class="appbar-inner">
+    <div class="appbar-info">
+      <div class="muted">Selecionados: <span id="barSel">0</span></div>
+      <div class="big">Total: R$ <span id="barTotal">0,00</span></div>
+    </div>
+
+    <div class="appbar-actions">
+      <button class="btn-secondary" onclick="abrirModalSelecionados()">Ver</button>
+      <button class="btn-yellow" onclick="scrollParaPagamento()">Pagar</button>
+      <button class="btn-secondary" onclick="limparSelecao()">Limpar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal selecionados -->
+<div class="modal-overlay" id="modalOverlay" onclick="fecharModalSelecionados()"></div>
+<div class="modal" id="modalSel">
+  <div class="modal-header">
+    <h3>🎟 Meus números selecionados</h3>
+    <button class="close-mini" onclick="fecharModalSelecionados()">✕</button>
+  </div>
+  <p class="small" id="modalHint">Nenhum número selecionado.</p>
+  <div class="list" id="selList"></div>
+</div>
+
+<!-- Admin -->
+<div class="overlay" id="overlay" onclick="fecharAdmin()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <h3>🔐 Administração</h3>
+    <button class="close-mini" onclick="fecharAdmin()">✕</button>
+  </div>
+
+  <div class="drawer-body">
+    <div id="adminLoginBox">
+      <p class="small">Somente administrador.</p>
+      <input id="senhaAdmin" placeholder="Senha do admin">
+      <button onclick="loginAdmin()">Entrar</button>
+    </div>
+
+    <div class="hidden" id="adminPanel">
+      <h2 style="margin:8px 0 10px">📊 Painel</h2>
+
+      <div class="stats">
+        <div class="cardstat" id="statVendidos"></div>
+        <div class="cardstat" id="statValor"></div>
+        <div class="cardstat" id="statPercentual"></div>
+      </div>
+
+      <input id="busca" placeholder="🔍 Buscar por nome, telefone ou número" onkeyup="atualizarAdmin()">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Números</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+      </table>
+
+      <button class="btn-yellow" style="margin-top:10px" onclick="logoutAdmin()">Sair</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ========= CONFIG ========= */
+  const TOTAL = 30000;
+  const VALOR = 0.50;
+  const PAGE_SIZE = 500;
+
+  const ADMIN_SENHA="070420";
+  const WHATS_ADMIN="5551999868666";
+
+  /* PIX (CNPJ) */
+  const PIX_CHAVE = "43967475000164";
+  const PIX_CHAVE_FORMATADA = "43.967.475/0001-64";
+  const PIX_NOME = "RIFAS DOS GURII";
+  const PIX_CIDADE = "PORTO ALEGRE";
+  const PIX_TXID = "RIFADOSGURI";
+
+  /* ========= STATE ========= */
+  let paginaAtual = 0;
+  let selecionados = [];
+  let data = JSON.parse(localStorage.getItem("rifa")) || { numeros:{}, compras:[] };
+
+  const grid = document.getElementById("grid");
+
+  // 🔥 OTIMIZAÇÃO: cache dos elementos da página atual (evita recriar a grid a cada clique)
+  let pageStart = 1;
+  let pageEnd = 500;
+  let pageEls = [];            // array de divs da página atual
+  let numToEl = new Map();     // numero -> elemento
+  let renderBuiltOnce = false; // se a grid já foi construída
+
+  /* ========= HELPERS ========= */
+  function salvar(){ localStorage.setItem("rifa", JSON.stringify(data)); }
+  function escHtml(str){
+    return String(str ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+  function toStatusLower(s){ return String(s||"").toLowerCase().trim(); }
+
+  window.addEventListener("storage", (e)=>{
+    if(e.key === "rifa"){
+      try{
+        data = JSON.parse(e.newValue) || {numeros:{}, compras:[]};
+        // quando mudar dados em outra aba: atualiza classes sem reconstruir tudo
+        aplicarStatusDaPagina();
+        atualizarBarra();
+        atualizarPixUI();
+        atualizarPublico();
+        atualizarAdmin();
+      }catch(_){}
+    }
+  });
+
+  /* ========= HERO SCROLL ========= */
+  function scrollParaPagamento(){
+    document.getElementById("secPagamento").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function scrollParaNumeros(){
+    document.getElementById("secNumeros").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function prosseguirCompra(){
+    if(!selecionados.length){
+      document.getElementById("grid").scrollIntoView({behavior:"smooth", block:"start"});
+      return;
+    }
+    scrollParaPagamento();
+  }
+
+  /* ========= ADMIN DRAWER ========= */
+  function abrirAdmin(){
+    document.getElementById("overlay").classList.add("open");
+    document.getElementById("drawer").classList.add("open");
+  }
+  function fecharAdmin(){
+    document.getElementById("overlay").classList.remove("open");
+    document.getElementById("drawer").classList.remove("open");
+  }
+
+  /* ========= MODAL SELECIONADOS ========= */
+  function abrirModalSelecionados(){
+    document.getElementById("modalOverlay").style.display="block";
+    document.getElementById("modalSel").style.display="block";
+    renderSelecionadosModal();
+  }
+  function fecharModalSelecionados(){
+    document.getElementById("modalOverlay").style.display="none";
+    document.getElementById("modalSel").style.display="none";
+  }
+  function renderSelecionadosModal(){
+    const list = document.getElementById("selList");
+    const hint = document.getElementById("modalHint");
+    list.innerHTML = "";
+
+    if(!selecionados.length){
+      hint.textContent = "Nenhum número selecionado.";
+      return;
+    }
+    hint.textContent = `Você selecionou ${selecionados.length} número(s).`;
+
+    const sorted = [...selecionados].sort((a,b)=>a-b);
+    sorted.forEach(n=>{
+      const pill = document.createElement("div");
+      pill.className="pill";
+      pill.textContent = String(n).padStart(5,"0");
+
+      const btn = document.createElement("button");
+      btn.textContent="Remover";
+      btn.onclick=()=>{
+        removerSelecionado(n);
+        renderSelecionadosModal();
+      };
+      pill.appendChild(btn);
+      list.appendChild(pill);
+    });
+  }
+
+  /* ========= BARRA FIXA ========= */
+  function atualizarBarra(){
+    document.getElementById("barSel").textContent = selecionados.length;
+    document.getElementById("selLabel").textContent = selecionados.length;
+    const total = (selecionados.length * VALOR).toFixed(2).replace(".",",");
+    document.getElementById("barTotal").textContent = total;
+  }
+
+  /* ========= LIMPAR ========= */
+  function limparSelecao(){
+    if(!selecionados.length) return;
+    if(!confirm("Deseja limpar sua seleção?")) return;
+
+    // remove classe só dos que estão na página atual (rápido)
+    selecionados.forEach(n=>{
+      const el = numToEl.get(n);
+      if(el) el.classList.remove("selecionado");
+    });
+
+    selecionados = [];
+    atualizarBarra();
+    atualizarPixUI();
+  }
+
+  /* ========= SELEÇÃO ALEATÓRIA ========= */
+  function randint(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function selecionarAleatorios(qtd){
+    if(qtd <= 0) return;
+
+    const livreCountEstimado = TOTAL - Object.keys(data.numeros || {}).length - selecionados.length;
+    if(livreCountEstimado <= 0) return alert("Não há mais números disponíveis.");
+
+    const alvo = Math.min(qtd, livreCountEstimado);
+    const maxTentativas = Math.max(7000, alvo * 35);
+
+    let adicionados = 0;
+    let tent = 0;
+
+    const selSet = new Set(selecionados);
+
+    while(adicionados < alvo && tent < maxTentativas){
+      tent++;
+      const n = randint(1, TOTAL);
+
+      if(data.numeros[n]) continue;
+      if(selSet.has(n)) continue;
+
+      selSet.add(n);
+      adicionados++;
+    }
+
+    // aplica só o que mudou
+    const antes = new Set(selecionados);
+    selecionados = Array.from(selSet);
+
+    // marca visualmente apenas os números que estão na página atual
+    selecionados.forEach(n=>{
+      if(!antes.has(n)){
+        const el = numToEl.get(n);
+        if(el) el.classList.add("selecionado");
+      }
+    });
+
+    atualizarBarra();
+    atualizarPixUI();
+
+    if(adicionados < alvo){
+      alert(`Consegui adicionar ${adicionados} número(s). Alguns não entraram porque já estavam ocupados.`);
+    }
+  }
+
+  function removerSelecionado(n){
+    selecionados = selecionados.filter(x=>x!==n);
+    const el = numToEl.get(n);
+    if(el) el.classList.remove("selecionado");
+    atualizarBarra();
+    atualizarPixUI();
+  }
+
+  /* ========= PIX (EMV + CRC) ========= */
+  function emv(id, value){
+    const v = String(value);
+    return id + String(v.length).padStart(2,'0') + v;
+  }
+  function crc16(payload){
+    let crc = 0xFFFF;
+    for (let i = 0; i < payload.length; i++){
+      crc ^= payload.charCodeAt(i) << 8;
+      for (let j = 0; j < 8; j++){
+        if (crc & 0x8000) crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
+        else crc = (crc << 1) & 0xFFFF;
+      }
+    }
+    return crc.toString(16).toUpperCase().padStart(4,'0');
+  }
+  function gerarPixCopiaECola(valor){
+    const gui = emv("00","BR.GOV.BCB.PIX");
+    const chave = emv("01", PIX_CHAVE);
+    const desc = emv("02", "RIFA IPHONE 15");
+    const mai = emv("26", gui + chave + desc);
+
+    const payloadBase =
+      emv("00","01") +
+      emv("01","12") +
+      mai +
+      emv("52","0000") +
+      emv("53","986") +
+      emv("54", valor) +
+      emv("58","BR") +
+      emv("59", PIX_NOME) +
+      emv("60", PIX_CIDADE) +
+      emv("62", emv("05", PIX_TXID));
+
+    const toCrc = payloadBase + "6304";
+    return toCrc + crc16(toCrc);
+  }
+  function atualizarPixUI(){
+    const qr = document.getElementById("qrPix");
+    const payloadText = document.getElementById("pixPayloadText");
+    const hint = document.getElementById("pixHint");
+
+    if(!selecionados.length){
+      qr.src = "";
+      qr.classList.remove("pix-glow");
+      payloadText.textContent = "Selecione números para gerar…";
+      hint.textContent = "Selecione números para gerar o QR PIX com o valor.";
+      return;
+    }
+
+    const valor = (selecionados.length * VALOR).toFixed(2);
+    const payload = gerarPixCopiaECola(valor);
+
+    payloadText.textContent = payload;
+    hint.textContent = `Valor gerado: R$ ${valor} (para ${selecionados.length} número(s))`;
+
+    qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=" + encodeURIComponent(payload);
+    qr.classList.add("pix-glow");
+  }
+  function copiarPixCopiaCola(){
+    const txt = document.getElementById("pixPayloadText").textContent;
+    if(!txt || txt.startsWith("Selecione")) return alert("Selecione números para gerar o PIX Copia e Cola.");
+    navigator.clipboard.writeText(txt);
+    alert("PIX Copia e Cola copiado!");
+  }
+  function copiarChaveCnpj(){
+    navigator.clipboard.writeText(PIX_CHAVE_FORMATADA);
+    alert("CNPJ PIX copiado!");
+  }
+
+  /* ========= PROGRESSO + ÚLTIMAS COMPRAS ========= */
+  function firstName(nome){
+    const parts = String(nome||"").trim().split(/\s+/);
+    return parts[0] || "Cliente";
+  }
+  function normalizeLegacyCompra(c){
+    if(!c.ts) c.ts = Date.now();
+    if(c.status) c.status = toStatusLower(c.status);
+    return c;
+  }
+  function getSoldCount(){
+    const nums = data?.numeros || {};
+    return Object.keys(nums).length;
+  }
+  function atualizarPublico(){
+    const vendidos = getSoldCount();
+    const perc = (vendidos / TOTAL * 100);
+
+    document.getElementById("soldCount").textContent = vendidos;
+    document.getElementById("soldTotal").textContent = TOTAL;
+    document.getElementById("soldPercent").textContent = perc.toFixed(2) + "%";
+    document.getElementById("progressFill").style.width = Math.min(100, perc).toFixed(2) + "%";
+
+    document.getElementById("soldCountHero").textContent = vendidos;
+    document.getElementById("soldPercentHero").textContent = perc.toFixed(2) + "%";
+
+    const ticker = document.getElementById("tickerMove");
+    const compras = (data.compras || [])
+      .map(normalizeLegacyCompra)
+      .slice()
+      .sort((a,b)=> (b.ts||0) - (a.ts||0))
+      .slice(0, 10);
+
+    if(!compras.length){
+      ticker.innerHTML = `<span class="ticker-item"><span class="dot yellow"></span> Aguardando primeiras compras…</span>`;
+      return;
+    }
+
+    const build = (arr)=> arr.map(c=>{
+      const st = toStatusLower(c.status);
+      const dotClass = (st === "pago") ? "dot" : "dot yellow";
+      const statusTxt = (st === "pago") ? "PAGO" : "RESERVADO";
+      const qtd = (c.numeros || []).length;
+      const exemploNum = (c.numeros && c.numeros.length) ? String(c.numeros[0]).padStart(5,"0") : "-----";
+      return `<span class="ticker-item"><span class="${dotClass}"></span> ${escHtml(firstName(c.nome))} • ${statusTxt} • ${qtd} nº (ex: ${exemploNum})</span>`;
+    }).join("");
+
+    const html = build(compras);
+    ticker.innerHTML = html + html;
+  }
+
+  /* ========= OTIMIZAÇÃO: construir a página uma vez ========= */
+  function construirPagina(){
+    grid.innerHTML = "";
+    pageEls = [];
+    numToEl.clear();
+
+    pageStart = paginaAtual * PAGE_SIZE + 1;
+    pageEnd = Math.min(pageStart + PAGE_SIZE - 1, TOTAL);
+
+    document.getElementById("pageLabel").textContent = (paginaAtual + 1);
+    document.getElementById("rangeLabel").textContent = `${pageStart}–${pageEnd}`;
+
+    const frag = document.createDocumentFragment();
+
+    for(let n = pageStart; n <= pageEnd; n++){
+      const d = document.createElement("div");
+      d.className = "numero disponivel";
+      d.textContent = String(n).padStart(5,"0");
+      d.dataset.num = String(n);
+
+      pageEls.push(d);
+      numToEl.set(n, d);
+      frag.appendChild(d);
+    }
+
+    grid.appendChild(frag);
+    aplicarStatusDaPagina();
+    aplicarSelecionadosDaPagina();
+    renderBuiltOnce = true;
+  }
+
+  function aplicarStatusDaPagina(){
+    // Atualiza classe de status apenas na página atual (rápido)
+    for(let n = pageStart; n <= pageEnd; n++){
+      const el = numToEl.get(n);
+      if(!el) continue;
+
+      const status = data.numeros[n]?.status || "disponivel";
+      // remove status antigos
+      el.classList.remove("disponivel","reservado","pago");
+      el.classList.add(status);
+    }
+  }
+
+  function aplicarSelecionadosDaPagina(){
+    // Atualiza classe "selecionado" só na página atual
+    const selSet = new Set(selecionados);
+    for(let n = pageStart; n <= pageEnd; n++){
+      const el = numToEl.get(n);
+      if(!el) continue;
+      if(selSet.has(n)) el.classList.add("selecionado");
+      else el.classList.remove("selecionado");
+    }
+  }
+
+  // Clique na grid via delegação (bem mais leve)
+  grid.addEventListener("click", (e)=>{
+    const el = e.target.closest(".numero");
+    if(!el) return;
+
+    const n = parseInt(el.dataset.num, 10);
+    if(!n) return;
+
+    // se já está reservado/pago, não deixa selecionar
+    if(data.numeros[n]) return;
+
+    const idx = selecionados.indexOf(n);
+    if(idx >= 0){
+      selecionados.splice(idx, 1);
+      el.classList.remove("selecionado");
+    }else{
+      selecionados.push(n);
+      el.classList.add("selecionado");
+    }
+
+    atualizarBarra();
+    atualizarPixUI();
+  });
+
+  /* ========= NAVEGAÇÃO ========= */
+  function proximaPagina(){
+    if((paginaAtual + 1) * PAGE_SIZE >= TOTAL) return;
+    paginaAtual++;
+    construirPagina();
+    atualizarBarra();
+    atualizarPixUI();
+    atualizarPublico();
+  }
+  function paginaAnterior(){
+    if(paginaAtual === 0) return;
+    paginaAtual--;
+    construirPagina();
+    atualizarBarra();
+    atualizarPixUI();
+    atualizarPublico();
+  }
+  function irParaNumero(){
+    const n = parseInt(document.getElementById("gotoNumber").value,10);
+    if(!n || n<1 || n>TOTAL) return alert("Número inválido.");
+
+    paginaAtual = Math.floor((n-1)/PAGE_SIZE);
+    construirPagina();
+
+    // scroll direto pro elemento (sem query pesada)
+    requestAnimationFrame(()=>{
+      const el = numToEl.get(n);
+      if(el) el.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+
+    atualizarBarra();
+    atualizarPixUI();
+    atualizarPublico();
+  }
+
+  /* ========= WHATS ========= */
+  function enviarWhats(){
+    const nome = document.getElementById("nome").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+    if(!nome || !telefone || !selecionados.length) return alert("Preencha todos os dados e selecione números.");
+
+    const livresAgora = selecionados.filter(n => !data.numeros[n]);
+    if(livresAgora.length !== selecionados.length){
+      // remove os ocupados
+      const ocupados = selecionados.filter(n => data.numeros[n]);
+      selecionados = livresAgora;
+      aplicarSelecionadosDaPagina();
+      atualizarBarra();
+      atualizarPixUI();
+      return alert("Alguns números ficaram indisponíveis. Revise sua seleção.");
+    }
+
+    const valor = (selecionados.length * VALOR).toFixed(2);
+    const nums = [...selecionados].sort((a,b)=>a-b).map(n=>String(n).padStart(5,"0")).join(", ");
+
+    selecionados.forEach(n=>{
+      data.numeros[n] = { nome, telefone, status:"reservado" };
+    });
+
+    data.compras.push({
+      nome, telefone,
+      numeros:[...selecionados],
+      valor,
+      status:"reservado",
+      ts: Date.now()
+    });
+
+    salvar();
+
+    // Atualiza status da página atual sem reconstruir
+    aplicarStatusDaPagina();
+    atualizarPublico();
+
+    const msg=`Olá! Já realizei o pagamento da rifa.\n\nNome: ${nome}\nTelefone: ${telefone}\nNúmeros: ${nums}\nValor: R$ ${valor}\n\nSegue o comprovante PIX 👇`;
+    window.open(`https://wa.me/${WHATS_ADMIN}?text=${encodeURIComponent(msg)}`,"_blank");
+
+    // limpa seleção
+    selecionados.forEach(n=>{
+      const el = numToEl.get(n);
+      if(el) el.classList.remove("selecionado");
+    });
+    selecionados = [];
+    atualizarBarra();
+    atualizarPixUI();
+  }
+
+  /* ========= ADMIN ========= */
+  function loginAdmin(){
+    const senha = document.getElementById("senhaAdmin").value;
+    if(senha !== ADMIN_SENHA) return alert("Senha incorreta");
+
+    document.getElementById("adminLoginBox").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    atualizarAdmin();
+  }
+  function logoutAdmin(){
+    document.getElementById("senhaAdmin").value="";
+    document.getElementById("adminPanel").classList.add("hidden");
+    document.getElementById("adminLoginBox").classList.remove("hidden");
+  }
+  function confirmarPagamento(i){
+    data.compras[i].status="pago";
+    data.compras[i].ts = Date.now();
+    (data.compras[i].numeros || []).forEach(n=>{
+      if(data.numeros[n]) data.numeros[n].status="pago";
+    });
+    salvar();
+
+    aplicarStatusDaPagina();
+    atualizarPublico();
+    atualizarAdmin();
+  }
+  function atualizarAdmin(){
+    const termo = (document.getElementById("busca").value||"").toLowerCase();
+    let vendidos=0, total=0;
+    const tbody=document.getElementById("tabela");
+    tbody.innerHTML="";
+
+    (data.compras || []).forEach((c,i)=>{
+      const nums = (c.numeros||[]);
+      vendidos += nums.length;
+
+      const st = toStatusLower(c.status);
+      if(st==="pago") total += parseFloat(c.valor || 0);
+
+      const txt = `${c.nome} ${c.telefone} ${nums.join(" ")}`.toLowerCase();
+      if(termo && !txt.includes(termo)) return;
+
+      tbody.innerHTML += `
+        <tr>
+          <td>${escHtml(c.nome)}</td>
+          <td>${escHtml(c.telefone)}</td>
+          <td>${nums.map(n=>String(n).padStart(5,"0")).join(", ")}</td>
+          <td>R$ ${String(c.valor||"0.00").replace(".",",")}</td>
+          <td>${st==="pago" ? "Pago" : "Reservado"}</td>
+          <td>${st==="reservado"
+            ? `<button class="confirmar" onclick="confirmarPagamento(${i})">Confirmar</button>`
+            : "✔"}</td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("statVendidos").textContent = `🎟 Vendidos/Reservados: ${vendidos}`;
+    document.getElementById("statValor").textContent = `💰 Arrecadado: R$ ${total.toFixed(2).replace(".",",")}`;
+    document.getElementById("statPercentual").textContent = `📊 ${(vendidos/TOTAL*100).toFixed(2)}%`;
+  }
+
+  /* ========= CARROSSEL ========= */
+  let carIndex = 0;
+  let carTimer = null;
+
+  function carUpdate(){
+    const track = document.getElementById("carTrack");
+    track.style.transform = `translateX(-${carIndex * 100}%)`;
+
+    const dots = [...document.querySelectorAll("#dots .dotbtn")];
+    dots.forEach((d,i)=> d.classList.toggle("active", i===carIndex));
+  }
+  function carGo(i){
+    carIndex = (i + 3) % 3;
+    carUpdate();
+    carAutoplay();
+  }
+  function carNext(){ carGo(carIndex + 1); }
+  function carPrev(){ carGo(carIndex - 1); }
+
+  function carAutoplay(){
+    if(carTimer) clearInterval(carTimer);
+    carTimer = setInterval(()=> carNext(), 6500);
+  }
+
+  (function setupCarouselPause(){
+    const el = document.getElementById("carousel");
+    el.addEventListener("mouseenter", ()=> { if(carTimer) clearInterval(carTimer); });
+    el.addEventListener("mouseleave", ()=> { carAutoplay(); });
+  })();
+
+  (function setupSwipe(){
+    const el = document.getElementById("carousel");
+    let startX = 0;
+    let dx = 0;
+    let isDown = false;
+
+    el.addEventListener("touchstart", (e)=>{
+      if(carTimer) clearInterval(carTimer);
+      isDown = true;
+      startX = e.touches[0].clientX;
+      dx = 0;
+    }, {passive:true});
+
+    el.addEventListener("touchmove", (e)=>{
+      if(!isDown) return;
+      dx = e.touches[0].clientX - startX;
+    }, {passive:true});
+
+    el.addEventListener("touchend", ()=>{
+      if(!isDown) return;
+      isDown = false;
+      if(Math.abs(dx) > 50){
+        if(dx < 0) carNext();
+        else carPrev();
+      }
+      dx = 0;
+      carAutoplay();
+    });
+  })();
+
+  /* ========= INIT ========= */
+  document.getElementById("pixKeyInline").textContent = PIX_CHAVE_FORMATADA;
+
+  // constrói página 1 apenas uma vez (leve)
+  construirPagina();
+  atualizarBarra();
+  atualizarPixUI();
+  atualizarPublico();
+  carAutoplay();
+
+  document.addEventListener("keydown",(e)=>{
+    if(e.key==="Escape"){
+      fecharAdmin();
+      fecharModalSelecionados();
+    }
+  });
+</script>
+
+</body>
+</html>
